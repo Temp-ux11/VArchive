@@ -4,24 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Veteraphone</title>
+<!-- Tab icon: set in src/data/site-data.json -> "branding" -> "favicon" (this empty icon is only a placeholder) -->
+<link rel="icon" href="data:,">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-cUORp98P.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-ZyHmlxLj.css">
+  <script type="module" crossorigin src="./assets/index-BZ8W5dDp.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-dwls4lLc.css">
 </head>
 <body>
 
-<!-- ========== MAIN HEADER: brand, main links, account menu ========== -->
+<!-- ========== MAIN HEADER: brand, main links, language, account menu ==========
+     Text marked data-i18n / data-i18n-aria is translated from src/data/ui.js -->
 <header>
-  <a class="brand" href="#/" aria-label="Veteraphone home">
+  <a class="brand" href="#/" aria-label="Veteraphone">
     <span class="logo" aria-hidden="true"></span>
     <span class="brand-name">Veteraphone</span>
   </a>
   <nav class="main-links" aria-label="Primary">
-    <a href="#/map">Jazz Map</a>
-    <a href="#/articles">Articles</a>
-    <a href="#/sources">Sources</a>
+    <a href="#/map" data-i18n="nav_map">Jazz Map</a>
+    <a href="#/articles" data-i18n="nav_articles">Articles</a>
+    <a href="#/sources" data-i18n="nav_sources">Sources</a>
   </nav>
-  <button id="burger" aria-label="Open menu" onclick="menu()">&#9776;</button>
+
+  <!-- LANGUAGE SELECTOR (top right) -->
+  <div class="lang" role="group" aria-label="Language" data-i18n-aria="lang_label">
+    <button data-lang="en" aria-pressed="true" onclick="setLang('en')">EN</button>
+    <button data-lang="es" aria-pressed="false" onclick="setLang('es')">ES</button>
+  </div>
+
+  <button id="burger" aria-label="Open menu" data-i18n-aria="burger_label" onclick="menu()">&#9776;</button>
 </header>
 
 <!-- Account / menu drawer (filled by menu() in main.js) -->
@@ -30,29 +40,29 @@
 <main id="app"></main>
 
 <!-- ========== FOOTER: disclaimer, support, legal, copyright ==========
-     Links open placeholder pages whose text is in site-data.json -> "pages". -->
+     Links open placeholder pages whose text is in site-data.json -> "pages" (Spanish: es.json). -->
 <footer id="site-footer">
   <div class="foot-grid">
     <div class="foot-disclaimer">
-      <h4>Disclaimer</h4>
-      <p>The Veteraphone Project stands as a non-profit organization backed by the DAHR and the NEH as an incentive for the preservation of historical records. All copyright belongs to its rightful owners.</p>
+      <h4 data-i18n="f_disclaimer">Disclaimer</h4>
+      <p data-i18n="f_disclaimer_text">The Veteraphone Project stands as a non-profit organization backed by the DAHR and the NEH as an incentive for the preservation of historical records. All copyright belongs to its rightful owners.</p>
     </div>
     <div class="foot-col">
-      <h4>Support</h4>
-      <a href="#/page/support">Support us</a>
-      <a href="#/page/donations">Donations</a>
-      <a href="#/page/contacts">Contacts</a>
+      <h4 data-i18n="f_support">Support</h4>
+      <a href="#/page/support" data-i18n="f_support_us">Support us</a>
+      <a href="#/page/donations" data-i18n="f_donations">Donations</a>
+      <a href="#/page/contacts" data-i18n="f_contacts">Contacts</a>
     </div>
     <div class="foot-col">
-      <h4>Legal</h4>
-      <a href="#/page/terms">Terms of Use</a>
-      <a href="#/page/privacy">Privacy Policy</a>
-      <a href="#/page/rights">Consumer Rights FAQ</a>
-      <a href="#/page/cookies">Cookie Preferences</a>
-      <a href="#/page/accessibility">Accessibility</a>
+      <h4 data-i18n="f_legal">Legal</h4>
+      <a href="#/page/terms" data-i18n="f_terms">Terms of Use</a>
+      <a href="#/page/privacy" data-i18n="f_privacy">Privacy Policy</a>
+      <a href="#/page/rights" data-i18n="f_rights">Consumer Rights FAQ</a>
+      <a href="#/page/cookies" data-i18n="f_cookies">Cookie Preferences</a>
+      <a href="#/page/accessibility" data-i18n="f_access">Accessibility</a>
     </div>
   </div>
-  <p class="foot-copy">&copy; 2026 The Veteraphone Project. Affiliated with the National Endowment for the Humanities</p>
+  <p class="foot-copy" data-i18n="f_copy">&copy; 2026 The Veteraphone Project. Affiliated with the National Endowment for the Humanities</p>
 </footer>
 
 </body>
