@@ -6,36 +6,50 @@
 <title>Veteraphone</title>
 <!-- Tab icon: set in src/data/site-data.json -> "branding" -> "favicon" (this empty icon is only a placeholder) -->
 <link rel="icon" href="data:,">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-CBxyHRYn.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-dwls4lLc.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Two typefaces only: Playfair Display (titles) and Helvetica Neue (everything else, a system font) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/index-CTXr3vYI.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-dzfNxceC.css">
 </head>
 <body>
 
-<!-- ========== MAIN HEADER: brand, main links, language, account menu ==========
-     Text marked data-i18n / data-i18n-aria is translated from src/data/ui.js -->
-<header>
+<!-- ========== MAIN HEADER: brand (left); links, search, language, menu (right) ==========
+     Text marked data-i18n / data-i18n-aria / data-i18n-ph is translated from src/data/ui.js
+     "hold" keeps it hidden until the site is shown; it then slides down. -->
+<header class="hold">
   <a class="brand" href="#/" aria-label="Veteraphone">
+    <!-- HEADER LOGO: set site-data.json -> branding.headerLogo. Without it, the round mark and name below show. -->
+    <img class="brand-logo" id="brand-logo" alt="" hidden>
     <span class="logo" aria-hidden="true"></span>
     <span class="brand-name">Veteraphone</span>
   </a>
+
   <nav class="main-links" aria-label="Primary">
     <a href="#/map" data-i18n="nav_map">Jazz Map</a>
     <a href="#/articles" data-i18n="nav_articles">Articles</a>
     <a href="#/sources" data-i18n="nav_sources">Sources</a>
   </nav>
 
-  <!-- LANGUAGE SELECTOR (top right) -->
+  <!-- SEARCH BAR (look only: not connected to anything yet) -->
+  <div class="search-pseudo" role="search">
+    <svg viewBox="0 0 20 20" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.5 12.5 18 18"/></svg>
+    <input type="search" placeholder="Search records, articles..." data-i18n-ph="search_ph" aria-label="Search" data-i18n-aria="search_label">
+  </div>
+
+  <!-- LANGUAGE SELECTOR -->
   <div class="lang" role="group" aria-label="Language" data-i18n-aria="lang_label">
     <button data-lang="en" aria-pressed="true" onclick="setLang('en')">EN</button>
     <button data-lang="es" aria-pressed="false" onclick="setLang('es')">ES</button>
   </div>
 
-  <button id="burger" aria-label="Open menu" data-i18n-aria="burger_label" onclick="menu()">&#9776;</button>
+  <button id="burger" aria-label="Open menu" aria-expanded="false" data-i18n-aria="burger_label" onclick="menu()">&#9776;</button>
 </header>
 
-<!-- Account / menu drawer (filled by menu() in main.js) -->
-<nav id="nav" aria-label="Account menu"></nav>
+<!-- Menu drawer (filled by menu() in main.js). Closes with its x, a click outside, or Escape. -->
+<nav id="nav" aria-label="Menu" inert></nav>
+<div id="scrim" onclick="closeMenu()"></div>
 
 <main id="app"></main>
 
@@ -56,6 +70,7 @@
     <div class="foot-col">
       <h4 data-i18n="f_legal">Legal</h4>
       <a href="#/page/terms" data-i18n="f_terms">Terms of Use</a>
+      <a href="#/page/rules" data-i18n="f_community">Community Rules</a>
       <a href="#/page/privacy" data-i18n="f_privacy">Privacy Policy</a>
       <a href="#/page/rights" data-i18n="f_rights">Consumer Rights FAQ</a>
       <a href="#/page/cookies" data-i18n="f_cookies">Cookie Preferences</a>
