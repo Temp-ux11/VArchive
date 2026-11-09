@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Two typefaces: Playfair Display (titles Bold, subtitles and buttons Regular) and Jost (text, Light) -->
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-3JrU4q4M.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DnnNuq0A.css">
+  <script type="module" crossorigin src="./assets/index-Gfom4wQN.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BgYdMszA.css">
 </head>
 <body>
 
@@ -43,6 +43,12 @@
   <div class="lang" role="group" aria-label="Language" data-i18n-aria="lang_label">
     <button data-lang="en" aria-pressed="true" onclick="setLang('en')">EN</button>
     <button data-lang="es" aria-pressed="false" onclick="setLang('es')">ES</button>
+  </div>
+
+  <!-- HEADSET (Meta Quest): shown only when the browser can start them (main.js -> showXRButtons) -->
+  <div class="xr-btns">
+    <button class="map-xr" id="xr-ar" hidden onclick="enterXR('ar')" data-i18n="xr_ar" data-i18n-title="xr_ar_tip">Passthrough</button>
+    <button class="map-xr" id="xr-vr" hidden onclick="enterXR('vr')" data-i18n="xr_vr" data-i18n-title="xr_vr_tip">Enter VR</button>
   </div>
 
   <button id="burger" aria-label="Open menu" aria-expanded="false" data-i18n-aria="burger_label" onclick="menu()">&#9776;</button>
