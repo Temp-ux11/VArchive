@@ -8,6 +8,11 @@ Restart the dev server after adding files.
              wood_solid_impact*       the boater knocks into something
              drywall_impact*          something knocks into the wall
              anything else            a record knocks into something (soft clacks, e.g. ShellacPlace*)
+           (files with "wind", "ambience" or "loop" in their names are never record knocks)
+  ambience/  the headset's ambience (src/js/xr-ambience.js), matched by name:
+             *wind*    a soft loop all around you, VR only (it may also sit in hit/)
+             *void*    now and then one swells far off in the dark, VR only
+             *clock*   a grandfather clock ticking by the wall, once the room is there
   break/   a record shatters
            e.g. Half-Life 2: physics/glass/glass_pottery_break1-4, glass_bottle_break1-2
 

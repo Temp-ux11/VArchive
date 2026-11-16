@@ -15,7 +15,7 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"Cube",
+			"name":"Borken Wall",
 			"translation":[
 				0,
 				1,
@@ -26,7 +26,7 @@
 	"materials":[
 		{
 			"doubleSided":true,
-			"name":"Wood panel verze2",
+			"name":"Wood panel verze2.001",
 			"normalTexture":{
 				"index":0
 			},
@@ -41,7 +41,7 @@
 		},
 		{
 			"doubleSided":true,
-			"name":"Decorative Wallpaper",
+			"name":"Decorative Wallpaper.001",
 			"normalTexture":{
 				"index":3
 			},
@@ -56,22 +56,24 @@
 		},
 		{
 			"doubleSided":true,
-			"name":"Material",
+			"name":"Damaged Concrete with rusty",
+			"normalTexture":{
+				"index":6
+			},
 			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0,
-					0,
-					0,
-					1
-				],
+				"baseColorTexture":{
+					"index":7
+				},
 				"metallicFactor":0,
-				"roughnessFactor":0.5
+				"metallicRoughnessTexture":{
+					"index":8
+				}
 			}
 		}
 	],
 	"meshes":[
 		{
-			"name":"Cube",
+			"name":"Cube.003",
 			"primitives":[
 				{
 					"attributes":{
@@ -127,6 +129,18 @@
 		{
 			"sampler":0,
 			"source":5
+		},
+		{
+			"sampler":0,
+			"source":6
+		},
+		{
+			"sampler":0,
+			"source":7
+		},
+		{
+			"sampler":0,
+			"source":8
 		}
 	],
 	"images":[
@@ -142,8 +156,8 @@
 		},
 		{
 			"mimeType":"image/png",
-			"name":"wood_panel_verze2_Metallic-wood_panel_verze2_Roughness",
-			"uri":"walltex/wood_panel_verze2_Metallic-wood_panel_verze2_Roughness.png"
+			"name":"wood_panel_verze2_Metallic.png.001-wood_panel_verze2_Roughness.png.001",
+			"uri":"walltex/wood_panel_verze2_Metallic.png.001-wood_panel_verze2_Roughness.png.001.png"
 		},
 		{
 			"mimeType":"image/jpeg",
@@ -157,8 +171,23 @@
 		},
 		{
 			"mimeType":"image/png",
-			"name":"4K-wallpaper_39_metallic-4K-wallpaper_39_roughness",
-			"uri":"walltex/4K-wallpaper_39_metallic-4K-wallpaper_39_roughness.png"
+			"name":"4K-wallpaper_39_metallic.jpg.001-4K-wallpaper_39_roughness.jpg.001",
+			"uri":"walltex/4K-wallpaper_39_metallic.jpg.001-4K-wallpaper_39_roughness.jpg.001.png"
+		},
+		{
+			"mimeType":"image/jpeg",
+			"name":"damaged_Concrete_with_rusty_Normal",
+			"uri":"walltex/damaged_Concrete_with_rusty_Normal.jpg"
+		},
+		{
+			"mimeType":"image/jpeg",
+			"name":"damaged_Concrete_with_rusty_Base_Color",
+			"uri":"walltex/damaged_Concrete_with_rusty_Base_Color.jpg"
+		},
+		{
+			"mimeType":"image/png",
+			"name":"damaged_Concrete_with_rusty_Roughness",
+			"uri":"walltex/damaged_Concrete_with_rusty_Roughness.png"
 		}
 	],
 	"accessors":[
@@ -168,7 +197,7 @@
 			"count":142,
 			"max":[
 				0.05000000447034836,
-				3.028571367263794,
+				2.5005714893341064,
 				8.5
 			],
 			"min":[
@@ -199,15 +228,15 @@
 		{
 			"bufferView":4,
 			"componentType":5126,
-			"count":27,
+			"count":96,
 			"max":[
-				0,
-				8.5,
+				0.5522474050521851,
+				8.618525505065918,
 				8.5
 			],
 			"min":[
 				0,
-				3.028571367263794,
+				2.5005714893341064,
 				-8.5
 			],
 			"type":"VEC3"
@@ -215,53 +244,53 @@
 		{
 			"bufferView":5,
 			"componentType":5126,
-			"count":27,
+			"count":96,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":6,
 			"componentType":5126,
-			"count":27,
+			"count":96,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":7,
 			"componentType":5123,
-			"count":96,
+			"count":144,
 			"type":"SCALAR"
 		},
 		{
 			"bufferView":8,
 			"componentType":5126,
-			"count":162,
+			"count":245,
 			"max":[
-				0,
-				8.5,
+				0.4122934341430664,
+				8.772515296936035,
 				8.5
 			],
 			"min":[
-				-0.6000000238418579,
+				-0.20000003278255463,
 				-1,
-				-8.5
+				-8.712082862854004
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":9,
 			"componentType":5126,
-			"count":162,
+			"count":245,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":10,
 			"componentType":5126,
-			"count":162,
+			"count":245,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":11,
 			"componentType":5123,
-			"count":552,
+			"count":606,
 			"type":"SCALAR"
 		}
 	],
@@ -292,50 +321,50 @@
 		},
 		{
 			"buffer":0,
-			"byteLength":324,
+			"byteLength":1152,
 			"byteOffset":5264,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":324,
-			"byteOffset":5588,
+			"byteLength":1152,
+			"byteOffset":6416,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":216,
-			"byteOffset":5912,
+			"byteLength":768,
+			"byteOffset":7568,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":192,
-			"byteOffset":6128,
+			"byteLength":288,
+			"byteOffset":8336,
 			"target":34963
 		},
 		{
 			"buffer":0,
-			"byteLength":1944,
-			"byteOffset":6320,
+			"byteLength":2940,
+			"byteOffset":8624,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1944,
-			"byteOffset":8264,
+			"byteLength":2940,
+			"byteOffset":11564,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1296,
-			"byteOffset":10208,
+			"byteLength":1960,
+			"byteOffset":14504,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":1104,
-			"byteOffset":11504,
+			"byteLength":1212,
+			"byteOffset":16464,
 			"target":34963
 		}
 	],
@@ -347,8 +376,8 @@
 	],
 	"buffers":[
 		{
-			"byteLength":12608,
-			"uri":"VeteraphoneWall.bin"
+			"byteLength":17676,
+			"uri":"SceneWall.bin"
 		}
 	]
 }
