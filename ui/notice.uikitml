@@ -1,0 +1,50 @@
+<!--
+  A greeting notice (sdk/greeting.js): 650 x 248, the card with its cut corners (ui/notice-frame.svg), the text
+  in the middle (filled in code, keywords bold; a little in front of the card, so the two never flicker when seen
+  at an angle), and the info box (45 x 45, ui/notice-info.svg) at the bottom
+  right, over the border, just before the cut corner.
+-->
+<style>
+  .card {
+    width: 650px;
+    height: 248px;
+  }
+  .frame {
+    position-type: absolute;
+    position-left: 0px;
+    position-top: 0px;
+    width: 650px;
+    height: 248px;
+  }
+  .text {
+    position-type: absolute;
+    position-left: 0px;
+    position-top: 0px;
+    width: 650px;
+    height: 248px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    padding-left: 48px;
+    padding-right: 48px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    gap-column: 9px;
+    transform-translate-z: 2px;
+  }
+  .info {
+    position-type: absolute;
+    position-right: 34px;
+    position-bottom: -20px;
+    width: 45px;
+    height: 45px;
+    transform-translate-z: 3px;
+  }
+</style>
+<div id="card" class="card">
+  <svg id="frame" class="frame" src="ui/notice-frame.svg"></svg>
+  <div id="text" class="text"></div>
+  <svg id="info" class="info" src="ui/notice-info.svg"></svg>
+</div>

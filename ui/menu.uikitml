@@ -1,0 +1,79 @@
+<!--
+  A headset panel (sdk/panels.js): the title bar (title in the middle, ✕ on the right) and the page under it,
+  which scrolls. The page is filled in code (sdk/menus.js). Sizes are UIKit pixels; panels.js sets the panel's
+  width and height (650 x 248 for the menus) and its size in meters. Colors: the site's (styles.css).
+-->
+<style>
+  .panel {
+    flex-direction: column;
+    width: 650px;
+    height: 248px;
+    background-color: #24150d;
+    border-width: 2px;
+    border-color: #6b4a36;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .bar {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    height: 46px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #1a0f09;
+    border-bottom-width: 1px;
+    border-color: #6b4a36;
+  }
+  .side {
+    flex-direction: row;
+    align-items: center;
+    width: 60px;
+  }
+  .right {
+    justify-content: flex-end;
+  }
+  .title {
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: center;
+    color: #F2E8D5;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .close {
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #F2E8D5;
+  }
+  .close:hover {
+    background-color: #8C2B22;
+  }
+  .x {
+    color: #F2E8D5;
+    font-size: 16px;
+  }
+  .page {
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: scroll;
+    padding-top: 12px;
+    padding-bottom: 14px;
+    padding-left: 22px;
+    padding-right: 22px;
+    gap: 8px;
+  }
+</style>
+<div id="panel" class="panel">
+  <div class="bar">
+    <div class="side"></div>
+    <span id="title" class="title">Title</span>
+    <div class="side right"><div id="close" class="close"><span class="x">✕</span></div></div>
+  </div>
+  <div id="page" class="page"></div>
+</div>
