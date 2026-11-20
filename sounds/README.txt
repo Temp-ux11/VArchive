@@ -2,12 +2,21 @@ Sounds for the records in the headset (src/js/xr-discs.js).
 Drop .wav, .ogg, .mp3 or .m4a files in these folders; every file is used, one picked at random each time.
 Restart the dev server after adding files.
 
-  hit/     everything that knocks. Files are sorted by the start of their name (xr-discs.js -> DISCS.solidSounds):
-             wood_furniture_impact*   something knocks into the desk or a drawer
-             wood_box_scrape*         a drawer sliding (a loop; the first file is used)
-             wood_solid_impact*       the boater knocks into something
-             drywall_impact*          something knocks into the wall
-             anything else            a record knocks into something (soft clacks, e.g. ShellacPlace*)
+  hit/     everything that knocks. Every thing in the room is made of a SURFACE (src/data/surfaces.js:
+           wood, drywall, concrete, metal, leather, felt, straw, tile, shellac). When two things knock
+           together, each plays its own surface's knock, picked here by the start of the file name:
+             wood_furniture_impact_soft* / _hard*   wood: the desk, the drawers, the board, the wall's trim
+             wood_box_scrape*                       wood sliding: a drawer (a loop; the first file is used)
+             wood_solid_impact_soft* / _hard*       straw: the boater
+             drywall_impact_soft* / _hard*          drywall: the wallpapered wall
+             concrete_impact_soft* / _hard*         concrete: the broken patches of the wall
+             metal_solid_impact_soft* / _hard*      metal: the crank
+             metal_computer_impact_soft* / _hard*   victor: the talking machine's case and lid
+             leather_impact_soft* / _hard*          leather: nothing is tagged leather now (none yet: sounds like wood)
+             felt_impact*                           felt: the board's felt, the platter (none yet: soft wood)
+             tile_impact_soft* / _hard*             tile: the hall's floor (none yet: silent)
+             anything else                          shellac: a record (soft clacks, e.g. ShellacPlace*)
+           _hard files play for knocks over 25 N (HARD in surfaces.js); without them the _soft ones do.
            (files with "wind", "ambience" or "loop" in their names are never record knocks)
   ambience/  the headset's ambience (src/js/xr-ambience.js), matched by name:
              *wind*    a soft loop all around you, VR only (it may also sit in hit/)
