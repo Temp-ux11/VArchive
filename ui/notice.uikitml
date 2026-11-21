@@ -1,7 +1,7 @@
 <!--
   A greeting notice (sdk/greeting.js): 650 x 248, the card with its cut corners (ui/notice-frame.svg), the text
   in the middle (filled in code, keywords bold; a little in front of the card, so the two never flicker when seen
-  at an angle), and the info box (45 x 45, ui/notice-info.svg) at the bottom
+  at an angle), and the info box (45 x 45: ui/notice-info.svg, the mark in front of it: ui/notice-info-mark.svg) at the bottom
   right, over the border, just before the cut corner.
 -->
 <style>
@@ -34,6 +34,21 @@
     gap-column: 9px;
     transform-translate-z: 2px;
   }
+  .box {
+    position-type: absolute;
+    position-left: 0px;
+    position-top: 0px;
+    width: 45px;
+    height: 45px;
+  }
+  .mark {
+    position-type: absolute;
+    position-left: 0px;
+    position-top: 0px;
+    width: 45px;
+    height: 45px;
+    transform-translate-z: 1px;
+  }
   .info {
     position-type: absolute;
     position-right: 34px;
@@ -46,5 +61,8 @@
 <div id="card" class="card">
   <svg id="frame" class="frame" src="ui/notice-frame.svg"></svg>
   <div id="text" class="text"></div>
-  <svg id="info" class="info" src="ui/notice-info.svg"></svg>
+  <div id="info" class="info">
+    <svg class="box" src="ui/notice-info.svg"></svg>
+    <svg class="mark" src="ui/notice-info-mark.svg"></svg>
+  </div>
 </div>

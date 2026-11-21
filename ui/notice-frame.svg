@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="650" height="248" viewBox="0 0 650 248">
-  <!-- the greeting's notice card (sdk/greeting.js): the border, then the fill inside it -->
-  <path fill="#3B2418" d="M24,0H626V24H650V224H626V248H24V224H0V24H24Z"/>
-  <path fill="#F2C98F" d="M28,4H622V28H646V220H622V244H28V220H4V28H28Z"/>
+  <!-- the greeting's notice card (sdk/greeting.js): the border is a ring (the outline with the inside cut out) and
+       the fill sits in that hole, so the two never overlap (overlapping, drawn in one plane, they flickered) -->
+  <path fill="#3B2418" fill-rule="evenodd" d="M24,0L626,0L626,24L650,24L650,224L626,224L626,248L24,248L24,224L0,224L0,24L24,24Z M28,28L4,28L4,220L28,220L28,244L622,244L622,220L646,220L646,28L622,28L622,4L28,4Z"/>
+  <path fill="#F2C98F" d="M28,4L622,4L622,28L646,28L646,220L622,220L622,244L28,244L28,220L4,220L4,28L28,28Z"/>
 </svg>
