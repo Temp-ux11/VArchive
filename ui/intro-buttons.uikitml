@@ -1,0 +1,29 @@
+<!--
+  The intro's buttons in the headset (sdk/intro.js): the sound switch, Skip, and at the end the entrance, in one row.
+  Sized for reading at 1.27 m (Meta's type and target sizes: 24 dp text, buttons at least 48 dp tall); the site's
+  colors and type. The buttons are filled in code, into the row inside the frame (never into the root: UIKit
+  keeps its own drawing on the root). The frame has a fixed size: a UIKit root left to size itself draws nothing.
+-->
+<style>
+  .frame {
+    flex-direction: row;
+    width: 760px;
+    height: 96px;
+    align-items: center;
+    justify-content: center;
+  }
+  .bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 14px;
+    border-radius: 16px;
+    background-color: #24150d;
+    border-width: 2px;
+    border-color: #6b4a36;
+  }
+</style>
+<div class="frame">
+  <div id="bar" class="bar"></div>
+</div>

@@ -1,0 +1,18 @@
+<!--
+  A CARD in the headset (sdk/cards.js): a label, a note, a button that isn't on a panel. The root is see-through and
+  sized in code; the card itself (id "card") sits in its middle, as big as what code puts in it, and code gives it
+  its look (sdk/cards.js CARD). Used by the loading card, the map's name card, the panels' tabs, the card on the
+  desk, the talking machine's labels and cards, and Bob's notices.
+-->
+<style>
+  .root {
+    width: 400px;
+    height: 100px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+<div class="root">
+  <div id="card"></div>
+</div>

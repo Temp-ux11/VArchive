@@ -1,26 +1,30 @@
 <!--
-  The menu button on your left wrist (sdk/wrist.js): 60 x 60, three bars (the site's menu button), the site's
-  colors. It shows while your left palm faces you; touch it with a finger of your right hand (or point and pinch)
-  to open the menu.
+  The menu button on your left wrist (sdk/wrist.js): a circle 64 across, with the menu icon (three bars, the site's
+  menu button) drawn inside it, in the site's colors. Drawn 3 cm across, at least Meta's 48 dp target up to 57 cm
+  from your eyes. It shows while your left palm faces you; tap it with your right index fingertip to open the menu.
+  (The icon is made of three bars, not an icon font: the build leaves UIKit's icon set out.)
 -->
 <style>
   .button {
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 7px;
+    gap: 6px;
     background-color: #24150d;
     border-width: 3px;
     border-color: #F2E8D5;
-    border-radius: 10px;
+    border-radius: 32px;
   }
-  .lit {
+  .button:hover {
+    background-color: #4a3222;
+  }
+  .button:active {
     background-color: #8C2B22;
   }
   .line {
-    width: 30px;
+    width: 28px;
     height: 4px;
     border-radius: 2px;
     background-color: #F2E8D5;
