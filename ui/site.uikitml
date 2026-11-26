@@ -3,7 +3,8 @@
   tabs down its left side. The tab chosen slides out and joins the panel; its page loads into the panel.
   It stands 1 m away, for reading, sized in Meta's units: 1 px here is 1 dp (1 dp = 3/48 of a degree, about 1.1 mm
   at 1 m). Body text is 20 dp, titles 36 to 40 dp, and every tab and button is at least 48 dp tall (Meta's
-  smallest target). The page is filled in code; what doesn't fit scrolls. Colors: the site's (styles.css), every
+  smallest target). Drawn at 0.65 mm a px, the tabs and the page's cards are 20 px apart: Meta's 12 mm between
+  targets (sdk/panels.js TARGET). The page is filled in code; what doesn't fit scrolls. Colors: the site's (styles.css), every
   text color at least 4.5:1 against what it sits on.
 -->
 <style>
@@ -19,7 +20,7 @@
     flex-shrink: 0;
     width: 160px;
     padding-top: 84px;
-    gap: 12px;
+    gap: 20px;
   }
   .panel {
     flex-direction: column;
@@ -74,7 +75,7 @@
     padding-bottom: 36px;
     padding-left: 40px;
     padding-right: 40px;
-    gap: 16px;
+    gap: 20px;
   }
 </style>
 <div class="frame">
