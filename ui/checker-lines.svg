@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="550" height="500" viewBox="0 0 550 500">
+  <!-- The Connection Checker's green ground (static/ui/checker.uikitml): its art-deco lines, a shade darker than the
+       site's Verdigris (#5F7A6B). A cross through the middle, two diamonds round it, and chevrons at the top and
+       bottom, as in the design. Each line is a thin filled bar: UIKit fills an SVG's outlines (it ignores
+       fill="none"), so strokes can't be used. -->
+  <g fill="#4f6a5b">
+    <rect x="22.0" y="247.0" width="506.0" height="6" transform="rotate(90.00 275 250)"/>
+    <rect x="-3.0" y="247.0" width="556.0" height="6" transform="rotate(0.00 275 250)"/>
+    <rect x="227.8" y="132.0" width="349.4" height="6" transform="rotate(42.05 402.5 135)"/>
+    <rect x="227.8" y="362.0" width="349.4" height="6" transform="rotate(137.95 402.5 365)"/>
+    <rect x="-27.2" y="362.0" width="349.4" height="6" transform="rotate(-137.95 147.5 365)"/>
+    <rect x="-27.2" y="132.0" width="349.4" height="6" transform="rotate(-42.05 147.5 135)"/>
+    <rect x="245.1" y="177.0" width="214.9" height="6" transform="rotate(42.09 352.5 180)"/>
+    <rect x="245.1" y="317.0" width="214.9" height="6" transform="rotate(137.91 352.5 320)"/>
+    <rect x="90.1" y="317.0" width="214.9" height="6" transform="rotate(-137.91 197.5 320)"/>
+    <rect x="90.1" y="177.0" width="214.9" height="6" transform="rotate(-42.09 197.5 180)"/>
+    <rect x="19.4" y="94.5" width="296.3" height="6" transform="rotate(42.21 167.5 97.5)"/>
+    <rect x="234.4" y="94.5" width="296.3" height="6" transform="rotate(-42.21 382.5 97.5)"/>
+    <rect x="19.4" y="399.5" width="296.3" height="6" transform="rotate(-42.21 167.5 402.5)"/>
+    <rect x="234.4" y="399.5" width="296.3" height="6" transform="rotate(42.21 382.5 402.5)"/>
+  </g>
+</svg>

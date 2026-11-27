@@ -1,0 +1,137 @@
+<!--
+  The main menu in the headset (sdk/menus.js), opened from the button on your left wrist (sdk/wrist.js). Drawn as a
+  flat VR menu: 1 UIKit px is one of Meta's dp (1/16 of a degree) where the menu stands, 0.48 m away, so the whole
+  menu is 430 x 560 px (22.5 x 29.3 cm). The site's colors (styles.css) and Jost.
+
+    TITLE      430 x 80, "MAIN MENU" in Jost regular, 36 px, cream on dark brown. The ✕ sits on its right corner,
+               a red circle 48 px across (25 mm: Meta's 22 mm target), drawn over the menu (z-index 1: no more, or a
+               fingertip picks it from further away: sdk/panels.js fairTouch).
+    CENTERED   UIKit sets a line of Jost a little high in its box (about 0.28 of its size), so each button's words
+               are pushed down by half their padding-top (16 px at 30 px) to sit in the middle. Their words
+               span the whole button, centered, and never break onto a second line (word-break: keep-all).
+    BUTTONS    380 x 80 (42 mm tall), dark brown with a 5 px cream stroke and 5 px corners; their words in Jost
+               regular, cream. 24 px (12.6 mm) apart: Meta's 12 mm between targets.
+    EXIT       the same size, red with a 5 px dark brown stroke and 30 px corners, its words in Jost italic (set in
+               sdk/menus.js: UIKitML only takes its own font names, and Jost italic is made in sdk/fonts.js).
+
+  TAPPING (sdk/input.js tappable): each button is one pressable thing, words included. Its `press` sits on the
+  button itself (set in sdk/menus.js), and a tap that begins on the words and ends on the button's edge (or the other
+  way round) still counts. The words are never pressable on their own. Nothing here scrolls, so a tap is never taken
+  for a drag of the page. The panel needs the ids page, title and close (sdk/panels.js).
+-->
+<style>
+  .panel {
+    flex-direction: column;
+    width: 430px;
+    height: 560px;
+    background-color: #8C2B22;
+    border-radius: 6px;
+  }
+  .bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #24150d;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  .title {
+    color: #F2E8D5;
+    font-size: 36px;
+    font-weight: normal;
+    letter-spacing: 1px;
+  }
+  .close {
+    z-index: 1;
+    position-type: absolute;
+    position-top: -14px;
+    position-right: -14px;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    background-color: #8C2B22;
+    border-width: 4px;
+    border-color: #24150d;
+    border-radius: 24px;
+  }
+  .close:hover {
+    background-color: #a8382d;
+  }
+  .close:active {
+    background-color: #6e2019;
+  }
+  .x {
+    color: #F2E8D5;
+    font-size: 26px;
+    font-weight: medium;
+    text-align: center;
+    padding-top: 7px;
+  }
+  .page {
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    padding-top: 30px;
+    gap: 24px;
+  }
+  .button {
+    flex-shrink: 0;
+    width: 380px;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    background-color: #24150d;
+    border-width: 5px;
+    border-color: #F2E8D5;
+    border-radius: 5px;
+  }
+  .button:hover {
+    background-color: #4a3222;
+  }
+  .button:active {
+    background-color: #6b4a36;
+  }
+  .exit {
+    flex-shrink: 0;
+    width: 380px;
+    height: 80px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: #8C2B22;
+    border-width: 5px;
+    border-color: #24150d;
+    border-radius: 30px;
+  }
+  .exit:hover {
+    background-color: #a8382d;
+  }
+  .exit:active {
+    background-color: #6e2019;
+  }
+  .label {
+    color: #F2E8D5;
+    font-size: 30px;
+    font-weight: normal;
+    text-align: center;
+    width: 100%;
+    word-break: keep-all;
+    padding-top: 16px;
+  }
+</style>
+<div id="panel" class="panel">
+  <div class="bar">
+    <span id="title" class="title">MAIN MENU</span>
+  </div>
+  <div id="page" class="page">
+    <div id="overview" class="button"><span id="overview-label" class="label">Overview Panel</span></div>
+    <div id="map" class="button"><span id="map-label" class="label">Map Position</span></div>
+    <div id="debug" class="button"><span id="debug-label" class="label">Debug Menu</span></div>
+    <div id="exit" class="exit"><span id="exit-label" class="label">Exit VR Mode</span></div>
+  </div>
+  <div id="close" class="close"><span class="x">X</span></div>
+</div>

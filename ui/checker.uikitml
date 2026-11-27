@@ -1,0 +1,164 @@
+<!--
+  The Connection Checker (sdk/archive-panel.js): how the Internet Archive lookups went, above the Record Cabinet,
+  opened only by tapping its Archive Connection button. A flat VR menu: 1 UIKit px is one of Meta's dp (1/16 of a
+  degree) at 0.7 m, about where you stand to tap that button (0.76 mm a px), so the whole panel is 560 x 560 px
+  (42.8 cm). The site's colors (styles.css) and Jost.
+
+    FRAME      560 x 560, dark brown, 5 px round the title and the green.
+    TITLE      550 x 50, "CONNECTION CHECKER" in Jost italic, 20 px, cream (the italic is set in sdk/archive-panel.js:
+               UIKitML only takes its own font names, and Jost italic is made in sdk/fonts.js).
+    ✕          60 x 60 (46 mm), red with a 5 px dark brown stroke, on the top right corner, drawn over the panel
+               (z-index 1: no more, or a fingertip picks it from further away: sdk/panels.js fairTouch).
+    GROUND     Verdigris green with its art-deco lines (ui/checker-lines.svg), drawn under the boxes and buttons
+               (their z-index). The lines don't write depth (set in code), or they'd show through the boxes.
+    REPORT     two cream boxes with a 5 px dark brown stroke, 472 x 204 (the connection and the records) and 472 x 118
+               (the Record Cabinet), filled in code. Their text is 20 px (Meta's body text, as the site panel),
+               Jost regular, dark brown, set to the left.
+    BUTTONS    Reload and Done: circles 90 across (69 mm), dark brown with a 5 px cream stroke, their words 20 px Jost
+               regular in cream, in italic capitals as in the design (set in code, as the title), centered (pushed down by half their padding-top: UIKit sets a line of Jost a little
+               high in its box).
+
+  TAPPING (sdk/input.js tappable): each button is one pressable thing, words included; its `press` sits on the button
+  itself (set in sdk/archive-panel.js). Nothing here scrolls. The panel needs the ids page, title and close
+  (sdk/panels.js).
+-->
+<style>
+  .panel {
+    flex-direction: column;
+    width: 560px;
+    height: 560px;
+    padding: 5px;
+    background-color: #24150d;
+    border-radius: 6px;
+  }
+  .bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 550px;
+    height: 50px;
+    background-color: #24150d;
+  }
+  .title {
+    color: #F2E8D5;
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    padding-top: 6px;
+  }
+  .close {
+    z-index: 1;
+    position-type: absolute;
+    position-top: -17px;
+    position-right: -14px;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    background-color: #8C2B22;
+    border-width: 5px;
+    border-color: #24150d;
+    border-radius: 30px;
+  }
+  .close:hover {
+    background-color: #a8382d;
+  }
+  .close:active {
+    background-color: #6e2019;
+  }
+  .x {
+    color: #F2E8D5;
+    font-size: 30px;
+    font-weight: medium;
+    text-align: center;
+    padding-top: 8px;
+  }
+  .page {
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 550px;
+    height: 500px;
+    padding-top: 30px;
+    background-color: #5F7A6B;
+  }
+  .lines {
+    position-type: absolute;
+    position-top: 0px;
+    position-left: 0px;
+    width: 550px;
+    height: 500px;
+  }
+  .box {
+    z-index: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+    width: 472px;
+    padding-left: 22px;
+    padding-right: 22px;
+    background-color: #F2E8D5;
+    border-width: 5px;
+    border-color: #24150d;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .report {
+    height: 204px;
+  }
+  .cabinet {
+    height: 118px;
+    margin-top: 12px;
+  }
+  .buttons {
+    z-index: 1;
+    flex-direction: row;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 472px;
+    margin-top: 18px;
+    gap: 187px;
+  }
+  .button {
+    width: 90px;
+    height: 90px;
+    align-items: center;
+    justify-content: center;
+    background-color: #24150d;
+    border-width: 5px;
+    border-color: #F2E8D5;
+    border-radius: 45px;
+  }
+  .button:hover {
+    background-color: #4a3222;
+  }
+  .button:active {
+    background-color: #6b4a36;
+  }
+  .label {
+    color: #F2E8D5;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    width: 100%;
+    word-break: keep-all;
+    padding-top: 11px;
+  }
+</style>
+<div id="panel" class="panel">
+  <div class="bar">
+    <span id="title" class="title">CONNECTION CHECKER</span>
+  </div>
+  <div id="page" class="page">
+    <svg id="lines" class="lines" src="ui/checker-lines.svg"></svg>
+    <div id="report" class="box report"></div>
+    <div id="cabinet" class="box cabinet"></div>
+    <div class="buttons">
+      <div id="reload" class="button"><span id="reload-label" class="label">RELOAD</span></div>
+      <div id="done" class="button"><span id="done-label" class="label">DONE</span></div>
+    </div>
+  </div>
+  <div id="close" class="close"><span class="x">X</span></div>
+</div>

@@ -1,0 +1,213 @@
+<!--
+  The Map Position menu in the headset (sdk/menus.js), from the main menu and the card on the desk. A flat VR menu:
+  1 UIKit px is one of Meta's dp (1/16 of a degree) where it stands, 0.64 m away (0.70 mm a px), so the menu is
+  415 x 560 px (29 x 39 cm). The site's colors (styles.css) and Jost.
+
+    TITLE      415 x 80, dark brown, "MAP POSITION" in Jost italic, 36 px, cream (the italic is set in sdk/menus.js:
+               UIKitML only takes its own font names, and Jost italic is made in sdk/fonts.js).
+    TEXT       what the menu does, 15 px Jost in cream, in a red box 375 x 60.
+    BUTTONS    Move the Map and Room Setup: 315 x 55, dark brown, 5 px corners, their words 36 px Jost regular in cream.
+    SCALE      its label ("Map's Scale", 20 px Jost in a dark brown box 115 x 33) on the step bar: 535 x 55, dark
+               brown, 60 px past the menu on both sides, with 10 squares 45 x 45, 6 px apart, one for each of the map's
+               10 sizes on a wall. The squares up to the size chosen are the site's yellow, the rest cream (set in code); the first
+               has a minus on it and the last a plus. (On a table the map is sized to fit the table: the bar is dimmed
+               and doesn't change it, in code.)
+    DONE       242 x 65, red with a 5 px dark brown stroke, half over the menu's lower edge, "Done" in 36 px Jost.
+  The step bar and Done are drawn over the menu's edge (z-index 1: no more, or a fingertip picks them from further
+  away: sdk/panels.js fairTouch).
+
+  CENTERED   UIKit sets a line of Jost a little high in its box (about 0.28 of its size), so each button's words are
+             pushed down by half their padding-top to sit in the middle. Their words span the
+             whole button, centered, and never break onto a second line (word-break: keep-all: "Room Setup" did).
+  TAPPING (sdk/input.js tappable): each button and square is one pressable thing, words and signs included; its
+  `press` sits on it (set in sdk/menus.js). Nothing here scrolls. The panel needs the ids page, title and close
+  (sdk/panels.js); this menu has no ✕ (Done closes it), so its close is hidden.
+-->
+<style>
+  .panel {
+    flex-direction: column;
+    align-items: center;
+    width: 415px;
+    height: 560px;
+    background-color: #F2E8D5;
+    border-width: 4px;
+    border-color: #24150d;
+    border-radius: 6px;
+  }
+  .bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 415px;
+    height: 80px;
+    margin-top: -4px;
+    background-color: #24150d;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  .title {
+    color: #F2E8D5;
+    font-size: 36px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    padding-top: 20px;
+  }
+  .close {
+    display: none;
+  }
+  .page {
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 407px;
+    height: 476px;
+    padding-top: 13px;
+  }
+  .about {
+    flex-shrink: 0;
+    width: 375px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 4px;
+    padding-right: 4px;
+    background-color: #8C2B22;
+    border-radius: 4px;
+  }
+  .about-text {
+    color: #F2E8D5;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 125%;
+    text-align: center;
+    padding-top: 4px;
+  }
+  .button {
+    flex-shrink: 0;
+    width: 315px;
+    height: 55px;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: #24150d;
+    border-radius: 5px;
+  }
+  .button:hover {
+    background-color: #4a3222;
+  }
+  .button:active {
+    background-color: #6b4a36;
+  }
+  .label {
+    color: #F2E8D5;
+    font-size: 36px;
+    font-weight: normal;
+    text-align: center;
+    width: 100%;
+    word-break: keep-all;
+    padding-top: 20px;
+  }
+  .second {
+    margin-top: 38px;
+  }
+  .scale {
+    flex-shrink: 0;
+    width: 115px;
+    height: 33px;
+    margin-top: 38px;
+    align-items: center;
+    justify-content: center;
+    background-color: #24150d;
+  }
+  .scale-text {
+    color: #F2E8D5;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    width: 100%;
+    word-break: keep-all;
+    padding-top: 11px;
+  }
+  .steps {
+    z-index: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 535px;
+    height: 55px;
+    gap: 6px;
+    background-color: #24150d;
+    border-radius: 4px;
+  }
+  .step {
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    background-color: #F2E8D5;
+  }
+  .step:hover {
+    background-color: #fffaf0;
+  }
+  .sign {
+    width: 26px;
+    height: 5px;
+    background-color: #24150d;
+  }
+  .upright {
+    position-type: absolute;
+    position-left: 20px;
+    position-top: 9.5px;
+    width: 5px;
+    height: 26px;
+    background-color: #24150d;
+  }
+  .done {
+    z-index: 1;
+    position-type: absolute;
+    position-bottom: -32px;
+    position-left: 82.5px;
+    width: 242px;
+    height: 65px;
+    align-items: center;
+    justify-content: center;
+    background-color: #8C2B22;
+    border-width: 5px;
+    border-color: #24150d;
+    border-radius: 32px;
+  }
+  .done:hover {
+    background-color: #a8382d;
+  }
+  .done:active {
+    background-color: #6e2019;
+  }
+</style>
+<div id="panel" class="panel">
+  <div class="bar">
+    <span id="title" class="title">MAP POSITION</span>
+  </div>
+  <div id="page" class="page">
+    <div class="about"><span id="about" class="about-text">You can change the size or arrange your setup, or reposition the map on a wall or table around your place.</span></div>
+    <div id="move" class="button"><span id="move-label" class="label">Move the Map</span></div>
+    <div id="setup" class="button second"><span id="setup-label" class="label">Room Setup</span></div>
+    <div class="scale"><span id="scale-label" class="scale-text">Map's Scale</span></div>
+    <div id="steps" class="steps">
+      <div id="s0" class="step"><div class="sign"></div></div>
+      <div id="s1" class="step"></div>
+      <div id="s2" class="step"></div>
+      <div id="s3" class="step"></div>
+      <div id="s4" class="step"></div>
+      <div id="s5" class="step"></div>
+      <div id="s6" class="step"></div>
+      <div id="s7" class="step"></div>
+      <div id="s8" class="step"></div>
+      <div id="s9" class="step"><div class="sign"></div><div class="upright"></div></div>
+    </div>
+  </div>
+  <div id="done" class="done"><span id="done-label" class="label">Done</span></div>
+  <div id="close" class="close"></div>
+</div>
